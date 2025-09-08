@@ -1,6 +1,8 @@
-import { ArrowRight, Play, Sparkles } from 'lucide-react';
+import { ArrowRight, Play } from 'lucide-react';
 
 export default function Hero() {
+  const calendarUrl = 'https://calendar.macawminds.com'; // poné acá tu URL exacta
+
   return (
     <section className="pt-24 pb-16 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-950 dark:via-gray-900 dark:to-blue-950 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -8,17 +10,11 @@ export default function Hero() {
           {/* Text content */}
           <div className="lg:col-span-6">
             <div>
-              {/* <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-600/10 text-blue-700 dark:text-blue-300 text-sm font-medium mb-6">
-                <Sparkles size={16} className="mr-2" />
-                Resultados garantizados en 24 horas
-              </div> */}
-
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
                 Impulsa tu{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
                   negocio digital
                 </span>{' '}
-                {/* en 24 horas */}
               </h1>
 
               <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
@@ -27,27 +23,27 @@ export default function Hero() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <button className="group bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                {/* Agendar demo -> Calendar */}
+                <a
+                  href={calendarUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                >
                   Agendar una demo
                   <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="group border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 px-8 py-4 rounded-lg font-semibold hover:border-gray-400 dark:hover:border-gray-500 transition-colors flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                </a>
+
+                {/* Ver servicios -> #servicios */}
+                <a
+                  href="#servicios"
+                  className="group border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 px-8 py-4 rounded-lg font-semibold hover:border-gray-400 dark:hover:border-gray-500 transition-colors flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                >
                   <Play size={20} className="mr-2" />
                   Ver servicios
-                </button>
+                </a>
               </div>
 
-              {/* <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 dark:text-gray-400">
-                <div className="flex items-center">
-                  <div className="flex -space-x-2 mr-3">
-                    <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 border-2 border-white dark:border-gray-950"></div>
-                    <div className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900 border-2 border-white dark:border-gray-950"></div>
-                    <div className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900 border-2 border-white dark:border-gray-950"></div>
-                  </div>
-                  +200 clientes satisfechos
-                </div>
-                <div>⭐ 4.9/5 valoración</div>
-              </div> */}
               <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 dark:text-gray-400">
                 <div className="flex -space-x-2 mr-3">
                   <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 border-2 border-white dark:border-gray-950"></div>
@@ -61,7 +57,6 @@ export default function Hero() {
                   💡 <span>Atención personalizada</span>
                 </div>
               </div>
-
             </div>
           </div>
 

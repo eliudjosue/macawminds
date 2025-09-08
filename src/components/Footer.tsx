@@ -1,29 +1,29 @@
-import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin, Youtube } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const quickLinks = [
     { name: 'Servicios', href: '#servicios' },
     { name: 'Proceso', href: '#proceso' },
-    { name: 'Casos de éxito', href: '#casos' },
+    // { name: 'Casos de éxito', href: '#casos' },
     { name: 'Planes', href: '#planes' },
     { name: 'Contacto', href: '#contacto' }
   ];
 
   const services = [
-    { name: 'Landing Pages', href: '#' },
-    { name: 'Agentes de IA', href: '#' },
-    { name: 'Gestión de Ads', href: '#' },
-    { name: 'Consultoría Digital', href: '#' },
-    { name: 'Desarrollo Web', href: '#' }
+    { name: 'Landing Pages', href: '#servicios' },
+    { name: 'Agentes de IA', href: '#servicios' },
+    { name: 'Gestión de Ads', href: '#servicios' },
+    { name: 'Consultoría Digital', href: '#specific' },
+    { name: 'Desarrollo Web', href: '#specific' }
   ];
 
   const socialLinks = [
-    { Icon: Facebook, href: '#', label: 'Facebook' },
-    { Icon: Twitter, href: '#', label: 'Twitter' },
-    { Icon: Instagram, href: '#', label: 'Instagram' },
-    { Icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { Icon: Youtube, href: '#', label: 'YouTube' }
+    // { Icon: Facebook, href: '#', label: 'Facebook' },
+    // { Icon: Twitter, href: '#', label: 'Twitter' },
+    { Icon: Instagram, href: 'https://www.instagram.com/macawminds?igsh=YzljYTk1ODg3Zg%3D%3D', label: 'Instagram' },
+    // { Icon: Linkedin, href: '#', label: 'LinkedIn' },
+    // { Icon: Youtube, href: '#', label: 'YouTube' }
   ];
 
   return (
@@ -52,6 +52,7 @@ export default function Footer() {
                   href={href}
                   aria-label={label}
                   className="h-10 w-10 grid place-items-center rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                  target='_blank'
                 >
                   <Icon size={18} />
                 </a>
@@ -99,7 +100,7 @@ export default function Footer() {
         </div>
 
         {/* Newsletter */}
-        <div className="border-t border-white/10 mt-12 pt-8">
+        {/* <div className="border-t border-white/10 mt-12 pt-8">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             <div className="text-center lg:text-left">
               <h4 className="font-semibold text-white/90 mb-2">Mantente actualizado</h4>
@@ -109,7 +110,7 @@ export default function Footer() {
             <div className="flex w-full max-w-md">
               <input
                 type="email"
-                placeholder="Tu email"
+                placeholder="macawmindsmarketing@gmail.com"
                 className="flex-1 min-w-0 px-4 py-3 rounded-l-xl bg-white/5 text-gray-100 placeholder:text-gray-500 ring-1 ring-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <button
@@ -119,23 +120,38 @@ export default function Footer() {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Copyright */}
         <div className="border-t border-white/10 mt-8 pt-8 text-center text-gray-400">
           <p>&copy; {new Date().getFullYear()} MacawMinds. Todos los derechos reservados.</p>
           <div className="flex justify-center gap-6 mt-4">
-            <a href="#" className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded">
+            {/* Política de Privacidad
+            <a
+              href="/privacy"
+              className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
+            >
               Política de Privacidad
-            </a>
-            <a href="#" className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded">
+            </a> */}
+
+            {/* Términos */}
+            <Link
+              to="/terms"
+              className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
+            >
               Términos de Servicio
-            </a>
-            <a href="#" className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded">
+            </Link>
+
+            {/* Cookies */}
+            {/* <a
+              href="/cookies"
+              className="hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
+            >
               Cookies
-            </a>
+            </a> */}
           </div>
         </div>
+
       </div>
     </footer>
   );

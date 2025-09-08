@@ -1,140 +1,176 @@
-import React from 'react';
-import { Check, ArrowRight, Star } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 
 export default function Pricing() {
-  const plans = [
+  const phone = "5491123878173"; // tu número de WhatsApp
+
+  const services = [
     {
-      name: 'Básico',
-      price: '$497',
-      period: 'proyecto',
-      description: 'Perfecto para emprendedores y pequeños negocios que necesitan presencia digital rápida.',
+      name: 'Landing Page',
+      usd: 'USD 150',
+      ars: '$190.000',
+      period: 'por proyecto',
+      description:
+        'Landing moderna, rápida y enfocada en conversión. Entrega en 24–48h con SEO básico y diseño responsive.',
       features: [
-        'Landing page optimizada',
-        'Diseño responsive',
+        '1 sección larga o 4–5 bloques',
+        'Diseño mobile-first',
         'Optimización SEO básica',
-        '1 revisión incluida',
-        'Entrega en 24-48h',
-        'Soporte por email'
+        'Implementación de analytics',
       ],
-      popular: false,
-      color: 'from-gray-600 to-gray-700'
+      accent: 'from-blue-600 to-cyan-600',
     },
     {
-      name: 'Profesional',
-      price: '$997',
-      period: 'proyecto',
-      description: 'La opción más popular para empresas que buscan maximizar conversiones y automatizar procesos.',
+      name: 'Agente de IA (Chatbot)',
+      usd: 'USD 500',
+      ars: '$650.000',
+      period: 'setup único',
+      description:
+        'Chatbot entrenado con tu contenido para captar leads y responder 24/7. Integración en tu web.',
       features: [
-        'Todo lo del plan Básico',
-        'Chatbot IA integrado',
-        'Análisis de competencia',
-        'Optimización de conversiones',
-        '3 revisiones incluidas',
-        'Setup de Google Analytics',
-        'Soporte prioritario'
+        'Entrenamiento con FAQs / docs',
+        'Widget web embebible',
+        'Integracion con whatsapp o telegram',
+        'Captura de leads',
+        'Panel básico de consultas',
       ],
-      popular: true,
-      color: 'from-blue-600 to-purple-600'
+      accent: 'from-purple-600 to-pink-600',
     },
     {
-      name: 'Premium',
-      price: '$1,997',
-      period: 'proyecto',
-      description: 'Solución completa para empresas que quieren dominar su mercado digital.',
+      name: 'Gestión de Ads',
+      usd: 'USD 200',
+      ars: '$260.000',
+      period: 'por mes',
+      description:
+        'Campañas en Google adds con optimizaciones semanales, reportes y foco en ROI.',
       features: [
-        'Todo lo del plan Profesional',
-        'Gestión de Ads (3 meses)',
-        'Chatbot IA avanzado',
-        'A/B testing incluido',
-        'Revisiones ilimitadas',
-        'Dashboard personalizado',
-        'Consultoría estratégica',
-        'Soporte 24/7'
+        'Setup y estructura de campañas',
+        'Campaña de busquedas (Search Ads)',
+        'Camapaña de máximo rendimiento',
+        'Reporte mensual',
+        'Soporte por email',
       ],
-      popular: false,
-      color: 'from-purple-600 to-pink-600'
-    }
+      accent: 'from-emerald-600 to-green-600',
+    },
   ];
 
   return (
     <section id="planes" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Planes diseñados para{' '}
+            Precios por{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-              tu crecimiento
+              servicio
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Elige el plan que mejor se adapte a tus objetivos. Todos incluyen 
-            garantía de satisfacción y resultados medibles.
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            Elegí exactamente lo que necesitás. Mostramos precios en{' '}
+            <span className="font-semibold">USD</span> y{' '}
+            <span className="font-semibold">ARS</span> para tu conveniencia.
           </p>
-          
-          <div className="inline-flex items-center bg-green-100 text-green-800 px-6 py-3 rounded-full text-sm font-semibold">
-            🎉 Descuento especial del 20% para los primeros 50 clientes
-          </div>
         </div>
 
+        {/* Cards */}
         <div className="grid md:grid-cols-3 gap-8">
-          {plans.map((plan, index) => (
-            <div key={index} className={`relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-shadow duration-300 ${plan.popular ? 'ring-2 ring-blue-500 transform scale-105' : ''}`}>
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center">
-                    <Star size={16} className="mr-2 fill-current" />
-                    Más Popular
+          {services.map((svc) => {
+            const message = encodeURIComponent(
+              `Hola, estoy interesado en el servicio de ${svc.name}. ¿Podrían darme más información?`
+            );
+            const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
+
+            return (
+              <div
+                key={svc.name}
+                className="relative bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="p-8">
+                  {/* Title */}
+                  <div
+                    className={`inline-flex items-center justify-center rounded-full px-4 py-1.5 text-sm font-semibold text-white bg-gradient-to-r ${svc.accent} mb-5`}
+                  >
+                    {svc.name}
                   </div>
-                </div>
-              )}
-              
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                <p className="text-gray-600 text-sm mb-6 leading-relaxed">{plan.description}</p>
-                
-                <div className="mb-8">
-                  <div className="flex items-baseline">
-                    <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                    <span className="text-gray-500 ml-2">/{plan.period}</span>
+
+                  <p className="text-gray-700 text-sm mb-6 leading-relaxed">
+                    {svc.description}
+                  </p>
+
+                  {/* Prices */}
+                  <div className="mb-6 space-y-3">
+                    <div className="flex items-baseline gap-2">
+                      <span className="inline-flex items-center rounded-md bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/10">
+                        USD
+                      </span>
+                      <span className="text-3xl font-bold text-gray-900">{svc.usd}</span>
+                      <span className="text-gray-500 text-sm">/ {svc.period}</span>
+                    </div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="inline-flex items-center rounded-md bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-800 ring-1 ring-inset ring-gray-300">
+                        ARS
+                      </span>
+                      <span className="text-3xl font-bold text-gray-900">{svc.ars}</span>
+                      <span className="text-gray-500 text-sm">/ {svc.period}</span>
+                    </div>
                   </div>
+
+                  {/* Features */}
+                  <ul className="space-y-3 mb-8">
+                    {svc.features.map((f) => (
+                      <li key={f} className="flex items-start">
+                        <div className="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3 mt-0.5">
+                          <Check size={14} className="text-green-600" />
+                        </div>
+                        <span className="text-gray-700 text-sm">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA */}
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center group bg-gray-900 text-white hover:bg-gray-800"
+                  >
+                    Solicitar {svc.name}
+                    <ArrowRight
+                      size={20}
+                      className="ml-2 transition-transform group-hover:translate-x-1"
+                    />
+                  </a>
+
+                  {/* Note */}
+                  <p className="mt-4 text-xs text-gray-500">
+                    * Precios de referencia. Impuestos no incluidos. Para ARS se
+                    utiliza tipo de cambio de referencia del día al contratar.
+                  </p>
                 </div>
-                
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start">
-                      <div className="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3 mt-0.5">
-                        <Check size={14} className="text-green-600" />
-                      </div>
-                      <span className="text-gray-700 text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <button className={`w-full py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center group ${
-                  plan.popular 
-                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg hover:shadow-blue-500/25' 
-                    : 'bg-gray-900 text-white hover:bg-gray-800'
-                }`}>
-                  Elegir {plan.name}
-                  <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </button>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
-        
-        <div className="text-center mt-16">
+
+        {/* Custom block */}
+        <div className="text-center mt-16" id='specific'>
           <div className="bg-blue-50 border border-blue-200 rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
-              ¿Necesitas algo personalizado?
+            <h3 className="text-xl font-bold text-gray-900 mb-3">
+              ¿Necesitás algo a medida?
             </h3>
-            <p className="text-gray-600 mb-6">
-              Ofrecemos soluciones empresariales a medida con integraciones personalizadas, 
-              desarrollo de aplicaciones y consultoría estratégica completa.
+            <p className="text-gray-700 mb-6">
+              Integramos todo (web, chatbot, campañas, reportes) en una solución
+              a tu medida. Contanos tu caso y armamos un presupuesto claro.
             </p>
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+            <a
+              href={`https://wa.me/${phone}?text=${encodeURIComponent(
+                'Hola, estoy interesado en una solución personalizada. ¿Podemos hablar?'
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block"
+            >
               Hablar con un especialista
-            </button>
+            </a>
           </div>
         </div>
       </div>
