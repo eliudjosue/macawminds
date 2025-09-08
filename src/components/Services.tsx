@@ -1,5 +1,4 @@
-import React from 'react';
-import { Globe, Bot, TrendingUp, ArrowRight } from 'lucide-react';
+import { ArrowRight, Bot, Globe, TrendingUp } from 'lucide-react';
 
 export default function Services() {
   const services = [
@@ -24,7 +23,7 @@ export default function Services() {
       title: 'Gestión de Ads',
       subtitle: 'Campañas que funcionan',
       description: 'Campañas publicitarias optimizadas en Google. Resultados medibles y ROI comprobado para tu negocio.',
-      features: ['Google Ads','Campaña de busquedas', 'Campaña de máximo rendimiento', 'ROI medible'],
+      features: ['Google Ads', 'Campaña de busquedas', 'Campaña de máximo rendimiento', 'ROI medible'],
       color: 'from-green-500 to-emerald-500'
     }
   ];
@@ -40,7 +39,7 @@ export default function Services() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Combinamos diseño, tecnología e inteligencia artificial para impulsar 
+            Combinamos diseño, tecnología e inteligencia artificial para impulsar
             tu presencia digital y generar resultados reales.
           </p>
         </div>
@@ -50,30 +49,36 @@ export default function Services() {
             const IconComponent = service.icon;
             return (
               <div key={index} className="group relative bg-white rounded-2xl border border-gray-100 hover:border-gray-200 p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-r ${service.color} mb-6`}>
-                  <IconComponent size={28} className="text-white" />
-                </div>
-                
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{service.title}</h3>
-                <p className="text-sm text-gray-500 font-medium mb-4">{service.subtitle}</p>
-                <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
-                
-                <ul className="space-y-3 mb-8">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-600">
-                      <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mr-3"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                
-                <button className="group/btn flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                  Saber más
-                  <ArrowRight size={16} className="ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                </button>
+                <a href="https://wa.me/5491123878173?text=Hola!%20Quiero%20más%20info%20sobre%20Landing%20Pages"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-r ${service.color} mb-6`}>
+                    <IconComponent size={28} className="text-white" />
+                  </div>
 
-                {/* Hover effect */}
-                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{service.title}</h3>
+                  <p className="text-sm text-gray-500 font-medium mb-4">{service.subtitle}</p>
+                  <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+
+                  <ul className="space-y-3 mb-8">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-sm text-gray-600">
+                        <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mr-3"></div>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button className="group/btn flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                    Saber más
+                    <ArrowRight size={16} className="ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                  </button>
+
+                  {/* Hover effect */}
+                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+                </a>
+
+
               </div>
             );
           })}

@@ -1,7 +1,7 @@
 import { ArrowRight, Play } from 'lucide-react';
 
 export default function Hero() {
-  const calendarUrl = 'https://calendar.macawminds.com'; // poné acá tu URL exacta
+  const calendarUrl = 'https://calendar.google.com/calendar/u/0/r'; // poné acá tu URL exacta
 
   return (
     <section className="pt-24 pb-16 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-950 dark:via-gray-900 dark:to-blue-950 overflow-hidden">
