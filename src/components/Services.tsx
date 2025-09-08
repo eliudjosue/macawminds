@@ -23,8 +23,8 @@ export default function Services() {
       icon: TrendingUp,
       title: 'Gestión de Ads',
       subtitle: 'Campañas que funcionan',
-      description: 'Campañas publicitarias optimizadas en Google, Meta y LinkedIn. Resultados medibles y ROI comprobado para tu negocio.',
-      features: ['Google Ads', 'Meta Ads', 'LinkedIn Ads', 'ROI medible'],
+      description: 'Campañas publicitarias optimizadas en Google. Resultados medibles y ROI comprobado para tu negocio.',
+      features: ['Google Ads','Campaña de busquedas', 'Campaña de máximo rendimiento', 'ROI medible'],
       color: 'from-green-500 to-emerald-500'
     }
   ];
