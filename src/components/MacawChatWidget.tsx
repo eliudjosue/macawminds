@@ -449,7 +449,7 @@ const MacawChatWidget: React.FC<MacawChatWidgetProps> = ({
       )}
 
       {/* Input area */}
-      <div className="p-4 border-t" style={{ borderColor: colors.muted }}>
+      <div className="p-4 border-t" style={{ borderColor: colors.muted, paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 1rem)' }}>
         <div className="flex items-end gap-3">
           <div className="flex-1">
             <textarea
@@ -528,17 +528,24 @@ const MacawChatWidget: React.FC<MacawChatWidgetProps> = ({
         )}
 
         {isOpen && (
-          <div
-            className={`w-[360px] max-w-[calc(100vw-3rem)] h-[520px] max-h-[80vh] rounded-2xl shadow-lg ${
-              position === 'bottom-right' ? 'fixed bottom-6 right-6' : 'fixed bottom-6 left-6'
-            }`}
-            style={{ backgroundColor: colors.bg }}
-            role="dialog"
-            aria-label="Chat de MacawMinds"
-          >
-            {chatContent}
-          </div>
-        )}
+  <div
+    className={
+      // Mobile: ocupa toda la pantalla
+      // Desktop (sm+): vuelve al tamaño flotante original
+      `fixed inset-0 w-screen h-[100dvh] rounded-none shadow-none
+       sm:w-[360px] sm:h-[520px] sm:max-h-[80vh] sm:rounded-2xl sm:shadow-lg
+       ${position === 'bottom-right'
+         ? 'sm:inset-auto sm:bottom-6 sm:right-6'
+         : 'sm:inset-auto sm:bottom-6 sm:left-6'}`
+    }
+    style={{ backgroundColor: colors.bg }}
+    role="dialog"
+    aria-label="Chat de MacawMinds"
+  >
+    {chatContent}
+  </div>
+)}
+
       </div>
     );
   }
