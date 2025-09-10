@@ -131,14 +131,30 @@ export default function Pricing() {
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center group bg-gray-900 text-white hover:bg-gray-800"
+                    className="
+    w-full sm:w-auto
+    px-6 sm:px-8
+    py-3 sm:py-4
+    rounded-lg sm:rounded-xl
+    font-semibold
+    text-base sm:text-lg
+    transition-all duration-300
+    flex items-center justify-center
+    gap-2
+    bg-gradient-to-r from-blue-600 to-purple-600
+    text-white
+    shadow-md hover:shadow-xl
+    hover:from-blue-700 hover:to-purple-700
+    focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500
+  "
                   >
                     Solicitar {svc.name}
                     <ArrowRight
                       size={20}
-                      className="ml-2 transition-transform group-hover:translate-x-1"
+                      className="transition-transform group-hover:translate-x-1"
                     />
                   </a>
+
 
                   {/* Note */}
                   <p className="mt-4 text-xs text-gray-500">
