@@ -3,6 +3,7 @@ import { Send, Mic, MicOff, Play, Pause, Trash2, MessageSquare, X } from 'lucide
 import { useLocalStorage } from '../lib/useLocalStorage';
 import type { ChatMessage, ChatSession, AudioState, WebhookPayload } from '../lib/types';
 import type { MacawChatWidgetProps } from './MacawChatWidget.d';
+import ReactMarkdown from 'react-markdown';
 
 const DEFAULT_COLORS = {
   brand: '#E0B050',
@@ -51,7 +52,7 @@ function extractReplyFromResponse(data: unknown): string {
     try {
       const s = JSON.stringify(obj);
       if (s && s !== '{}') return s;
-    } catch {}
+    } catch { }
   }
   return 'Sin respuesta';
 }
@@ -341,17 +342,26 @@ const MacawChatWidget: React.FC<MacawChatWidgetProps> = ({
     return (
       <div key={message.id} className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`}>
         <div
-          className={`max-w-[80%] px-4 py-2 rounded-2xl text-sm leading-relaxed ${
-            isUser ? 'text-[#0A0E18] shadow-md'
-            : isError ? 'bg-red-900/20 text-red-200 border border-red-800/30'
-            : 'text-[#F8FAFC] border border-[#1E293B]/30'
-          }`}
+          className={`max-w-[80%] px-4 py-2 rounded-2xl text-sm leading-relaxed ${isUser ? 'text-[#0A0E18] shadow-md'
+              : isError ? 'bg-red-900/20 text-red-200 border border-red-800/30'
+                : 'text-[#F8FAFC] border border-[#1E293B]/30'
+            }`}
           style={{
             backgroundColor: isUser ? colors.brand : isError ? undefined : colors.card,
             whiteSpace: 'pre-wrap' // respetar \n y espacios
           }}
         >
-          {message.content}
+          <ReactMarkdown
+            components={{
+              a: ({ node, ...props }) => (
+                <a
+                  {...props}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 underline hover:text-blue-700"
+                />
+              ),
+            }}>{message.content}</ReactMarkdown>
         </div>
       </div>
     );
@@ -516,9 +526,8 @@ const MacawChatWidget: React.FC<MacawChatWidgetProps> = ({
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}
-            className={`w-14 h-14 rounded-2xl shadow-xl hover:scale-105 transition-transform focus:outline-none focus:ring-4 focus:ring-offset-2 ${
-              position === 'bottom-right' ? 'fixed bottom-6 right-6' : 'fixed bottom-6 left-6'
-            }`}
+            className={`w-14 h-14 rounded-2xl shadow-xl hover:scale-105 transition-transform focus:outline-none focus:ring-4 focus:ring-offset-2 ${position === 'bottom-right' ? 'fixed bottom-6 right-6' : 'fixed bottom-6 left-6'
+              }`}
             style={{ backgroundColor: colors.brand, color: colors.bg }}
             role="button"
             aria-label="Abrir chat"
@@ -528,23 +537,23 @@ const MacawChatWidget: React.FC<MacawChatWidgetProps> = ({
         )}
 
         {isOpen && (
-  <div
-    className={
-      // Mobile: ocupa toda la pantalla
-      // Desktop (sm+): vuelve al tamaño flotante original
-      `fixed inset-0 w-screen h-[100dvh] rounded-none shadow-none
+          <div
+            className={
+              // Mobile: ocupa toda la pantalla
+              // Desktop (sm+): vuelve al tamaño flotante original
+              `fixed inset-0 w-screen h-[100dvh] rounded-none shadow-none
        sm:w-[360px] sm:h-[520px] sm:max-h-[80vh] sm:rounded-2xl sm:shadow-lg
        ${position === 'bottom-right'
-         ? 'sm:inset-auto sm:bottom-6 sm:right-6'
-         : 'sm:inset-auto sm:bottom-6 sm:left-6'}`
-    }
-    style={{ backgroundColor: colors.bg }}
-    role="dialog"
-    aria-label="Chat de MacawMinds"
-  >
-    {chatContent}
-  </div>
-)}
+                ? 'sm:inset-auto sm:bottom-6 sm:right-6'
+                : 'sm:inset-auto sm:bottom-6 sm:left-6'}`
+            }
+            style={{ backgroundColor: colors.bg }}
+            role="dialog"
+            aria-label="Chat de MacawMinds"
+          >
+            {chatContent}
+          </div>
+        )}
 
       </div>
     );
