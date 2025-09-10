@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const calendarUrl = "https://calendar.google.com/calendar/u/0/r"; // reemplazá por tu URL exacta
+  const calendarUrl = "https://calendar.app.google/cBSkP4qoqcictUXG7"; // reemplazá por tu URL exacta
 
   return (
     <header className="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100">

@@ -4,7 +4,7 @@ import React from 'react';
 import { Mail, Phone, MessageCircle, Send } from 'lucide-react';
 
 export default function Contact() {
-  const calendarUrl = 'https://calendar.google.com/calendar/u/0/r'; // reemplazá por tu URL exacta
+  const calendarUrl = 'https://calendar.app.google/cBSkP4qoqcictUXG7'; // reemplazá por tu URL exacta
 
   const [formData, setFormData] = React.useState({
     name: '',
@@ -37,7 +37,7 @@ export default function Contact() {
     body.append('_next', 'https://macawminds-xi.vercel.app/');
 
     try {
-      const res = await fetch('https://calendar.google.com/calendar/u/0/r', {
+      const res = await fetch('https://calendar.app.google/cBSkP4qoqcictUXG7', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: body.toString(),
